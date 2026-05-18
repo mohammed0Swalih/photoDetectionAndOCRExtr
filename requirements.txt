@@ -1,0 +1,16 @@
+# Core API
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9      # needed for file uploads in FastAPI
+
+# Image processing
+opencv-python-headless==4.9.0.80   # headless = no GUI, perfect for servers
+Pillow==10.3.0
+numpy==1.26.4
+
+# OCR
+pytesseract==0.3.10          # Python wrapper around Tesseract engine
+
+# Validation & utilities
+pydantic==2.7.1
+python-dotenv==1.0.0

@@ -1,0 +1,11 @@
+Objective:
+To use facial recognition and OCR models for Business processes like KYC and KYB
+
+Expected output:
+- Solution Document
+- Working demo
+- presentation
+
+Potential Tools:
+python, OpenCV, Tesseract, Docling, FASTAPI
+
