@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+*.pyo
+.env
+research/
+*.ipynb
+.git
+models/
+*.jpg
+*.png

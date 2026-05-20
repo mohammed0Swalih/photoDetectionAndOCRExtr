@@ -1,6 +1,6 @@
 import easyocr
 
-reader = easyocr.Reader(['en'])
+reader = easyocr.Reader(['en', 'ar'])
 
 def parse_mrz(image_path):
     result = reader.readtext(image_path)
