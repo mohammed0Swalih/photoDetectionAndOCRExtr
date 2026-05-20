@@ -7,8 +7,13 @@ import base64
 from src.portrait import extract_portrait
 from src.ocr import extract_fields
 from src.mrz import parse_mrz
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
+
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 def save_temp_file(file):
     temp_path = f"temp_{file.filename}"
@@ -16,9 +21,10 @@ def save_temp_file(file):
         shutil.copyfileobj(file.file, f)
     return temp_path
 
-@app.get("/")
-def home():
-    return {"message": "PhotoExtr API is running!"}
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    with open("static/index.html", encoding="utf-8") as f:
+        return f.read()
 
 @app.post("/extract/portrait")
 async def portrait(file: UploadFile = File(...)):

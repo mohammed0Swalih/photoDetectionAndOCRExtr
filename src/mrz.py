@@ -15,10 +15,14 @@ def parse_mrz(image_path):
     # parse line 1
     doc_type = line1[0:1]
     country = line1[2:5]
-    name = line1[5:44]
+    # split by << to separate surname and given name
+    name_parts = line1[5:].split('<<')
+    surname = name_parts[0].replace('<', ' ').strip()
+    given_name = name_parts[1].replace('<', ' ').strip() if len(name_parts) > 1 else ''
+    full_name = f"{given_name} {surname}".strip()
     
     # parse line 2
-    passport_no = line2[0:9]
+    passport_no = line2[0:8]
     nationality = line2[10:13]
     dob = line2[13:19]
     sex = line2[20:21]
@@ -41,7 +45,7 @@ def parse_mrz(image_path):
     return {
         'doc_type': doc_type,
         'country': country,
-        'name': name,
+        'name': full_name,
         'passport_no': passport_no,
         'nationality': nationality,
         'dob': dob,
